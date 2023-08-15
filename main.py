@@ -54,8 +54,22 @@ def actionlogin():
     
 @app.route('/DashboardAdmin')
 def dasboardadmin():
+    # start user
+    conn = mysql.connection
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(id) FROM pengguna")
+    jmlhuser = cursor.fetchone()[0]
+    # end user
+
+    # start barcode
+    conn = mysql.connection
+    cursors = conn.cursor()
+    cursors.execute("SELECT COUNT(id) FROM barcodebarang")
+    jmlhbarcode = cursors.fetchone()[0]
+    # end barcode
+
     if 'email' in session:
-        return render_template("DashboardAdmin/index.html",title="Dashboard Admin",halpage="Dashboard")
+        return render_template("DashboardAdmin/index.html",title="Dashboard Admin",halpage="Dashboard",jmlhuser=jmlhuser,jmlhbarcode=jmlhbarcode)
     else:
         return redirect(url_for('login'))
 
