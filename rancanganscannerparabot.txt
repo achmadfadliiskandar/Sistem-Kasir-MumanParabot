@@ -1,0 +1,44 @@
+RANCANGAN APLIKASI SCANNER PARABOT
+
+tools/alat
+1.visual studio code(kode editor)
+2.flask(library python)
+3.mysql(database)
+4.bingung(antara mau pake camera ataupun manual cuman harganya ya mahal)
+5.boostrap (ikut versiaja)
+6.template admin
+7.opencv-camera
+8.qrcode
+9.file txt
+
+database field
+tabelparabot
+-harga
+-jumlah
+-gambarbarcode
+tabeluser
+-user
+
+menu APLIKASI
+-login
+-membuat akun lain
+-dashboard admin
+-tambah barcode
+-menu semuabarcode
+-edit barcode
+-halamankerjabarcode
+
+
+alur/flow
+1.membuat data barcode dengan metode crud (field/isi : ID SCAN(JIKA PAKAI scanner manual,harga,jumlah) kalau tidak ya pakai kamera lalu scan dengan barcode yang sudah dibuat)
+2.menyiapkan satu buah folder untuk menyimpan data barcode
+3.setelah itu kita dapat melakukan pencarian barcode yang menampilkan id scan(jika manual) dan harga(yang paling penting ya ini) dan jumlah default(pasti 1) 
+4.(kenapa gw yang no 3 simpang siur? karena baru nemu refrensi nya tadi yang kamera dan ya setelah dipikir2 kita tidak perlu mengeluarkan biaya untuk membeli scanner)
+5.setelah dipikir-pikir kita pakai kamera aja karena alat scanner harganya mahal duitnya terbatas wkwkw
+
+refrensi:
+https://www.youtube.com/watch?v=SrZuwM705yE
+https://youtu.be/zU7YVKnwTdo
+https://stackoverflow.com/questions/54786145/web-cam-in-a-webpage-using-flask-and-python
+https://codeshack.io/login-system-python-flask-mysql/
+https://www.youtube.com/watch?v=MEWLUpFkE30

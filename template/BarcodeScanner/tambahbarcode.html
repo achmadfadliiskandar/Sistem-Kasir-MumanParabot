@@ -1,0 +1,17 @@
+{% extends 'master/index.html' %}
+
+<div class="container">
+    {% block content %}
+    {% if session.sebagai == "Admin" %} 
+    <form action="{{url_for('StoreBarcode')}}" method="post">
+        <div class="mb-3">
+            <label for="harga" class="form-label">Harga</label>
+            <input class="form-control" type="number" name="harga" placeholder="daftar harga" aria-label="daftar harga">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+    {%else%}
+    <div class="alert alert-danger">Mohon Maaf Bagian Ini Terbatas</div>
+    {%endif%}
+    {% endblock %}
+</div>

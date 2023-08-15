@@ -1,0 +1,53 @@
+{% extends 'master/index.html' %}
+
+<div class="container">
+    {% block content %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for pesan in messages %}
+    <div class="alert alert-success my-3">{{pesan}}</div>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+    <a href="{{url_for('tambahkanpengguna')}}" class="btn btn-primary my-3 text-capitalize">tambah user/pengguna</a>
+    {%if session.sebagai == "Admin" %}
+    <a href="{{url_for('updatepengguna',id=session.id)}}" class="btn btn-success">Edit Profile</a>
+    {%else%}
+    <a href="{{url_for('updatepengguna',id=session.id)}}" class="btn btn-success">Edit Profile</a>
+    {%endif%}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Email</th>
+                <th scope="col">Akses</th>
+                <th scope="col">Sebagai</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in pengguna %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{user[1]}}</td>
+                <td>{{user[2]}}</td>
+                <td>{{user[4]}}</td>
+                <td>{{user[5]}}</td>
+                <td>
+                    {% if session['sebagai'] == "Admin" %}
+                    <a href="{{url_for('updatepengguna', id=user[0])}}" class="btn btn-success">Edit</a>
+                    <form action="{{url_for('hapuspengguna', id=user[0])}}" method="post" style="display: inline-block;"
+                        onsubmit="return confirm('yakin datanya mau dihapus')">
+                        <button class="btn btn-danger">Hapus</button>
+                    </form>
+                    {% elif session['sebagai'] == "Pedagang" and user[5] == "Pedagang" %}
+                    <p>Akun Aktif</p>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    {% endblock %}
+</div>

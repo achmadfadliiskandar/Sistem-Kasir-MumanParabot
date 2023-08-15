@@ -1,0 +1,37 @@
+{% extends 'master/index.html' %}
+
+<div class="container">
+    {% block content %}
+    <form action="{{url_for('updatepengguna',id=data[0])}}" method="POST">
+        <div class="mb-3">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username" value="{{data[1]}}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" value="{{data[2]}}">
+        </div>
+        {% if session.sebagai == "Admin" %}  
+        <div class="mb-3">
+            <label for="username">Akses</label>
+            <select class="form-select form-control" name="akses" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="Diizinkan" {% if data[4] =="Diizinkan" %} selected {% endif %}>Diizinkan</option>
+                <option value="Tidak Diizinkan" {% if data[4] =="Tidak Diizinkan" %} selected {% endif %}>Tidak Diizinkan</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="sebagai">Role / Sebagai</label>
+            <select class="form-select form-control" name="sebagai" aria-label="Default select example">
+                <option selected>Berperan Sebagai</option>
+                <option value="Admin" {% if data[5] =="Admin" %} selected {% endif %}>Admin</option>
+                <option value="Pedagang" {% if data[5] =="Pedagang" %} selected {% endif %}>Pedagang</option>
+            </select>
+        </div>
+        {%else%}
+        <div class="alert alert-danger">Lanjutkan Edit Saja!!</div>
+        {%endif%}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% endblock %}
+</div>

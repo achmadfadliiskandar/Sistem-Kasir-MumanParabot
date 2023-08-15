@@ -1,0 +1,54 @@
+{% extends 'master/index.html' %}
+
+<div class="container">
+    {% block content %}
+    <div class="row">
+        <div class="col-lg-8 col-sm-8">
+            <h1>Bagian Scanner</h1>
+            <img src="{{url_for('rekamankerja')}}" style="width: 100%;height: 350px;" alt="">
+            <div class="row">
+                <div class="col-sm-8">
+                    <button class="btn btn-primary my-3 w-100" onclick="window.location.assign('/halamankerja')">Tampilkan Semua</button>
+                    <!-- <a href="{{url_for('PageWork')}}" class="btn btn-primary my-3 w-100">Refresh</a> -->
+                </div>
+                <div class="col-sm-4">
+                    <form action="/clearcart" method="post">
+                        <button class="btn btn-danger my-3 w-100">Clear Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+            <h2 class="text-capitalize">Perhitungan harga</h2>
+            <div id="scanned-data">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Harga</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for line in perhitungan %}
+                            <tr>
+                                <td>{{ line }}</td>
+                            </tr>
+                            {% endfor %}
+                    </tbody>
+                    </table>
+            </div>
+            <div class="alert alert-info">Total Semua : {{total}}</div>
+        </div>
+        <style>
+            #scanned-data{
+                background-color: whitesmoke;
+                color: black;
+                overflow-x: hidden;
+                overflow-y: auto;
+                text-align:justify;
+                width: 100%;
+                height: 355px;
+            }
+        </style>
+    </div>
+    {% endblock %}
+</div>
