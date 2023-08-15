@@ -4,7 +4,7 @@ saya membuat sistem ini bertujuan agar mudah mengetahui sebuah harga barang di t
 
 <h4>Arah Teknik</h4>
 
-#### The quarterly results look great!
+#### LIBRARY/FRAMEWORK YANG DIGUNAKAN
 
 > -Flask
 > -Boostrap
