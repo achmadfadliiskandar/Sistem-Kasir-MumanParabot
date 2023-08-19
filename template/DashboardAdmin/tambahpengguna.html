@@ -2,7 +2,8 @@
 
 <div class="container">
     {% block content %}
-    {% if session.sebagai == "Admin" %}    
+    {% if session.sebagai == "Admin" %}
+    <div class="alert alert-danger my-3" style="display: none;" id="validasi">Isi Dulu Semua !! Jangan Direfresh Hilang Datanya</div>    
     <form action="{{url_for('tambahkanpengguna')}}" method="POST">
         <div class="mb-3">
             <label for="username">Username</label>
@@ -10,32 +11,52 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+            <input type="password" class="form-control" name="password" id="password">
         </div>
         <div class="mb-3">
             <label for="username">Akses</label>
-            <select class="form-select form-control" name="akses" aria-label="Default select example">
-                <option selected>Open this select menu</option>
+            <select class="form-select form-control" name="akses" id="akses" aria-label="Default select example">
+                <option selected disabled>Pilihan Izin Akses</option>
                 <option value="Diizinkan">Diizinkan</option>
                 <option value="Tidak Diizinkan">Tidak Diizinkan</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="sebagai">Role / Sebagai</label>
-            <select class="form-select form-control" name="sebagai" aria-label="Default select example">
-                <option selected>Berperan Sebagai</option>
+            <select class="form-select form-control" name="sebagai" id="sebagai" aria-label="Default select example">
+                <option selected disabled>Berperan Sebagai</option>
                 <option value="Admin">Admin</option>
                 <option value="Pedagang">Pedagang</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" onclick="CheckForm()">Submit</button>
     </form>
     {%else%}
     <div class="alert alert-danger">Mohon Maaf Bagian Ini Terbatas</div>
     {%endif%}
+    <script>
+        function CheckForm(){
+            name = document.getElementById("username").value;
+            email = document.getElementById("email").value;
+            pass = document.getElementById("password").value;
+            // console.log(name)
+            if (name == 0 || email == 0 || pass == 0) {
+                // console.log("lancar")
+                document.getElementById("username").style.border = "1px solid #dc3545"
+                document.getElementById("email").style.border = "1px solid #dc3545"
+                document.getElementById("password").style.border = "1px solid #dc3545"
+                document.getElementById("validasi").style.display = "block"
+                event.preventDefault()
+            } else {
+                document.getElementById("username").style.border = "1px solid #198754"
+                document.getElementById("email").style.border = "1px solid #198754"
+                document.getElementById("password").style.border = "1px solid #198754"
+            }
+        }
+    </script>
     {% endblock %}
 </div>

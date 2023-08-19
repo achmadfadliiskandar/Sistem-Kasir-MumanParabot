@@ -9,8 +9,18 @@
     {%endfor%}
     {%endif%}
     {%endwith%}
-    <a href="{{url_for('AddBarcode')}}" class="btn btn-primary my-3 text-capitalize">tambah Kode barcode</a>
-    <button class="btn btn-secondary my-3" onclick="window.print()">Cetak Barcode</button>
+    <div class="row">
+        <div class="col-sm-8">
+            <a href="{{url_for('AddBarcode')}}" class="btn btn-primary my-3 text-capitalize">tambah Kode barcode</a>
+            <button class="btn btn-secondary my-3" onclick="window.print()">Cetak Barcode</button>
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group my-3">
+                <input type="text" class="form-control" id="searchInput" aria-label="Dollar amount (with dot and two decimal places)" onkeyup="cari()">
+                <span class="input-group-text">Cari</span>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             {% for barcodebarang in barcodeharga %}
@@ -26,6 +36,21 @@
             </div>
             {% endfor %}
         </div>
+        <script>
+            function cari(){
+                let inputan = document.getElementById('searchInput').value;
+                inputan = inputan.toLowerCase();
+                let x = document.getElementsByClassName("card");
+
+                for (i=0; i < x.length; i++){
+                    if (!x[i].innerHTML.toLocaleLowerCase().includes(inputan)) {
+                        x[i].style.display = "none";
+                    } else {
+                        x[i].style.display = "block";
+                    }
+                }
+            }
+        </script>
     </div>    
     {% endblock %}
 </div>
