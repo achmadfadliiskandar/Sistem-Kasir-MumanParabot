@@ -10,6 +10,7 @@ tools/alat
 7.opencv-camera
 8.qrcode
 9.file txt
+10.data tables
 
 database field
 tabelparabot
@@ -42,3 +43,4 @@ https://youtu.be/zU7YVKnwTdo
 https://stackoverflow.com/questions/54786145/web-cam-in-a-webpage-using-flask-and-python
 https://codeshack.io/login-system-python-flask-mysql/
 https://www.youtube.com/watch?v=MEWLUpFkE30
+https://www.youtube.com/watch?v=vt0OXl2WCGI
