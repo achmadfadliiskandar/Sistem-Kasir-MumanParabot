@@ -36,6 +36,10 @@
             </div>
             {% endfor %}
         </div>
+        <div class="pagination">
+            <div class="alert alert-info ml-3 mr-3">{{ pagination.info }}</div>
+            <p>{{ pagination.links }}</p>
+        </div>
         <script>
             function cari(){
                 let inputan = document.getElementById('searchInput').value;

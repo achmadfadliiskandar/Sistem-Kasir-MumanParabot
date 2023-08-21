@@ -2,6 +2,7 @@ from flask import Flask,render_template,flash,request,url_for,session,redirect,R
 from flask_mysqldb import MySQL
 from flask_bcrypt import Bcrypt
 from pyzbar.pyzbar import decode
+from flask_paginate import Pagination,get_page_args
 import MySQLdb.cursors
 import re
 import qrcode
@@ -185,9 +186,19 @@ def BarcodeScanner():
         for item in barcodeharga:
             datakerja.write(f"{item[1]}\n")
     # text end
+    page, per_page, offset = get_page_args(page_parameter="page", per_page_parameter="per_page")
+    page = page or 1
+    per_page = per_page or 10
+    offset = (page - 1) * per_page
+
+    def get_barcodes(offset=0,per_page=10):
+        return barcodeharga[offset:offset+per_page]
 
     if 'email' in session:
-        return render_template("BarcodeScanner/index.html",title="Data Barcode",halpage="Data Barcode",barcodeharga = barcodeharga)
+        total = len(barcodeharga)
+        pagination_barcode = get_barcodes(offset=offset, per_page=per_page)
+        pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='boostrap4')
+        return render_template("BarcodeScanner/index.html", title="Data Barcode", halpage="Data Barcode", barcodeharga=pagination_barcode, page=page, per_page=per_page, pagination=pagination)
     else:
         return redirect(url_for('login'))
     
