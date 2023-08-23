@@ -90,8 +90,19 @@ def semuadatauser():
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM pengguna WHERE NOT sebagai='Admin'")
     pengguna = cursor.fetchall()
+    page, per_page, offset = get_page_args(page_parameter="page", per_page_parameter="per_page")
+    page = page or 1
+    per_page = per_page or 10
+    offset = (page - 1) * per_page
+
+    def getUser(offset=0,per_page=10):
+        return pengguna[offset:offset+per_page]
+    
     if 'email' in session:
-        return render_template("DashboardAdmin/datapengguna.html",title="Data Pengguna",halpage="Data Pengguna",pengguna=pengguna)
+        total = len(pengguna)
+        pagination_barcode = getUser(offset=offset, per_page=per_page)
+        pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='boostrap4')
+        return render_template("DashboardAdmin/datapengguna.html",title="Data Pengguna",halpage="Data Pengguna", pengguna=pagination_barcode, page=page, per_page=per_page, pagination=pagination)
     else:
         return redirect(url_for('login'))
 
