@@ -2,6 +2,15 @@
 
 <div class="container">
     {% block content %}
+    <div class="alert alert-secondary text-info">
+        <h2>Cara Pemakaian</h2>
+        <hr>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">1.Scan Kode Pada Kamera</li>
+            <li class="list-group-item">2.Jika Ingin Melihat Semua Jumlah Pembelian Tekan Tombol Tampilkan Semua</li>
+            <li class="list-group-item">3.Jika Sudah Selesai/Terjadi Kesalahan Tekan Tombol Hapus Hitungan</li>
+        </ul>
+    </div>
     <div class="row">
         <div class="col-lg-8 col-sm-8">
             <h1>Bagian Scanner</h1>
@@ -13,7 +22,7 @@
                 </div>
                 <div class="col-sm-4">
                     <form action="/clearcart" method="post">
-                        <button class="btn btn-danger my-3 w-100">Selesaikan Pekerjaan</button>
+                        <button class="btn btn-danger my-3 w-100">Hapus Hitungan</button>
                     </form>
                 </div>
             </div>

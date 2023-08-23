@@ -10,7 +10,7 @@ tools/alat
 7.opencv-camera
 8.qrcode
 9.file txt
-10.data tables
+10.Javascript
 
 database field
 tabelparabot
