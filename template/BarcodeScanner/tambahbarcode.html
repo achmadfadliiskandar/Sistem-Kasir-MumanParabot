@@ -3,15 +3,26 @@
 <div class="container">
     {% block content %}
     {% if session.sebagai == "Admin" %} 
+    <div class="alert alert-danger my-3" style="display: none;" id="validasi">Isi Dulu Semua !! Jangan Direfresh Hilang Datanya</div>    
     <form action="{{url_for('StoreBarcode')}}" method="post">
         <div class="mb-3">
             <label for="harga" class="form-label">Harga</label>
-            <input class="form-control" type="number" name="harga" placeholder="daftar harga" aria-label="daftar harga">
+            <input class="form-control" type="number" name="harga" id="harga" placeholder="daftar harga" aria-label="daftar harga">
         </div>
-        <button type="submit" class="btn btn-primary w-100">Submit</button>
+        <button type="submit" class="btn btn-primary w-100" onclick="Submit()">Submit</button>
     </form>
     {%else%}
     <div class="alert alert-danger">Mohon Maaf Bagian Ini Terbatas</div>
     {%endif%}
+    <script>
+        function Submit(){
+            harga = document.getElementById("harga").value; 
+            if (harga == 0) {
+                document.getElementById("harga").style.border = "1px solid #dc3545"
+                document.getElementById("validasi").style.display = "block"
+                event.preventDefault()
+            }
+        }
+    </script>
     {% endblock %}
 </div>
