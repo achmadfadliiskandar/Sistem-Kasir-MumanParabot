@@ -15,8 +15,14 @@
     {%else%}
     <a href="{{url_for('updatepengguna',id=session.id)}}" class="btn btn-success">Edit Profile</a>
     {%endif%}
-    <table class="table table-bordered">
-        <thead>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="pencarian" onkeyup="pencarian()">
+        <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">Cari</span>
+        </div>
+    </div>
+    <table class="table table-bordered" id="table">
+        <thead class="header">
             <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
@@ -49,5 +55,41 @@
             </tr>
         </tbody>
     </table>
+    <script>
+        function pencarian() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("pencarian");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("pencarian");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table");
+        tr = table.getElementsByTagName("tr")
+        for (let i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    </script>
     {% endblock %}
 </div>
