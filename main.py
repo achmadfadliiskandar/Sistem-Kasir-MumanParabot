@@ -3,6 +3,7 @@ from flask_mysqldb import MySQL
 from flask_bcrypt import Bcrypt
 from pyzbar.pyzbar import decode
 from flask_paginate import Pagination,get_page_args
+from playsound import playsound
 import MySQLdb.cursors
 import re
 import qrcode
@@ -322,6 +323,7 @@ def frames():
                     positioning = barcode.rect
                     cv2.putText(frame, output, (positioning[0], positioning[1]),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 255), 2)
+                    playsound(r"C:\Users\X260\Desktop\python\belajarguipy\ScannerParabot\effectscan.mp3")
                 terakhirscan = current_time
 
         if frame is not None:
