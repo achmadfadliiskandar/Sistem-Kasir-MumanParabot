@@ -21,4 +21,12 @@ saya membuat sistem ini bertujuan agar mudah mengetahui sebuah harga barang di t
 > lalu akan muncul perintah http://127.0.0.1:5000/ itu adalah ip yang digunakan untuk memulai web/aplikasi dengan flask
 > jangan lupa juga siapkan pip
 > kalau mau cek semua pip ya ketikan perintah di terminal/command pip list
+>
 
+### mengambil file ini dari github dan commandnya
+> *bisa* jadi mungkin **penting**.
+> - pull : git pull
+> - commit : git commit -m perubahan misal : "parabotku laku"
+> - menambahkan file atau record : git add
+> - push : git push
+> - kalau mau ambil file ini dari github maunya di commit cmdnya/perintahnya : git clone https://github.com/achmadfadliiskandar/Sistem-Kasir-MumanParabot.git
