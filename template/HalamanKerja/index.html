@@ -2,15 +2,20 @@
 
 <div class="container">
     {% block content %}
-    <div class="alert alert-secondary text-info">
-        <h2>Cara Pemakaian</h2>
+    <div class="alert alert-secondary">
+        <button class="btn btn-transparent" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <h2 class="text-white d-inline">Cara Pemakaian/Keselamatan Kerja K3</h2>
+        <i class="fas fa-plus ms-2 float-start"></i>
+        </button>
         <hr>
-        <ul class="list-group list-group-flush">
+        <div class="collapse" id="collapseExample">
+        <ul class="list-group list-group-flush text-info">
             <li class="list-group-item">1.Scan Kode Pada Kamera</li>
             <li class="list-group-item">2.Jika Ingin Melihat Semua Jumlah Pembelian Tekan Tombol Tampilkan Semua</li>
             <li class="list-group-item">3.Jika Sudah Selesai/Terjadi Kesalahan Tekan Tombol Hapus Hitungan</li>
-            <li class="list-group-item">4.Diusahakan Fokus Ya!!(URGENT/PENTING)</li>
+            <li class="list-group-item">4.Diusahakan Fokus Ya!!(PENTING)</li>
         </ul>
+    </div>
     </div>
     <div class="row">
         <div class="col-lg-8 col-sm-8">
