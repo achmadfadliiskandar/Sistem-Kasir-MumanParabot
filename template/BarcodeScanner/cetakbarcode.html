@@ -1,0 +1,25 @@
+{% extends 'master/index.html' %}
+
+<div class="container">
+    {% block content %}
+
+    <div class="container">
+        <button class="btn btn-primary my-2" onclick="window.print()">Cetak Barcode</button>
+        <div class="row">
+            {% for barcodebarang in barcodeharga %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='tempatbarcode/' + barcodebarang[3]) }}" class="card-img-top" style="height: 100%;" alt="gambar barcode">
+                    <div class="card-body">
+                        <h2 class="card-title">Harga : {{ barcodebarang[1] }}</h2>
+                        <p class="card-text">Jumlah : {{ barcodebarang[2] }}</p>
+                        <!-- Add your edit and delete buttons here -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- end -->
+    </div>    
+    {% endblock %}
+</div>

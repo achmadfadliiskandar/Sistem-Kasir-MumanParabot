@@ -258,6 +258,20 @@ def StoreBarcode():
     else:
         return redirect(url_for('login'))
     
+@app.route('/PrintBarcode')
+def PrintBarcode():
+    # database start
+    conn = mysql.connection
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM barcodebarang ORDER BY harga ASC")
+    barcodeharga = cursor.fetchall()
+    # data base end
+
+    if 'email' in session:
+        return render_template("BarcodeScanner/cetakbarcode.html",title="Cetak Barcode", halpage="Cetak Barcode",barcodeharga=barcodeharga)
+    else:
+        return redirect(url_for('login'))
+    
 
 # halaman kerja
 

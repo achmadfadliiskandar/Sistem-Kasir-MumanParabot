@@ -53,8 +53,8 @@
                         </li>
                     </ul>
                 </li>
-                <li {% if request.path == '/barcodescanner' or request.path == '/tambahbarcode' %} class="nav-item menu-open" {% else %} class="nav-item" {%endif%}>
-                    <a href="#" {% if request.path == '/barcodescanner' or request.path == '/tambahbarcode'  %} class="nav-link active" {% else %} class="nav-link" {%endif%}>
+                <li {% if request.path == '/barcodescanner' or request.path == '/tambahbarcode' or request.path == '/PrintBarcode' %} class="nav-item menu-open" {% else %} class="nav-item" {%endif%}>
+                    <a href="#" {% if request.path == '/barcodescanner' or request.path == '/tambahbarcode' or request.path == '/PrintBarcode'  %} class="nav-link active" {% else %} class="nav-link" {%endif%}>
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Barcode
@@ -73,6 +73,12 @@
                             <a href="{{url_for('AddBarcode')}}" {% if request.path == '/tambahbarcode' %} class="nav-link active" {% else %} class="nav-link" {%endif%}>
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tambah Barcode</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url_for('PrintBarcode')}}" {% if request.path == '/PrintBarcode' %} class="nav-link active" {% else %} class="nav-link" {%endif%}>
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cetak Barcode</p>
                             </a>
                         </li>
                     </ul>
